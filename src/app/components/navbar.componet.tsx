@@ -27,7 +27,7 @@ export const Navbar = () => {
     <header className="bg-white">
       <nav className="flex justify-between items-center w-[70%]  mx-auto py-2.5">
         <div>
-          <Link href="/">
+          <Link href="/" className="flex items-center md:whitespace-pre">
             <svg
               className="h-10 w-10 mr-1 text-yellow-400"
               xmlns="http://www.w3.org/2000/svg"
@@ -42,33 +42,34 @@ export const Navbar = () => {
                 d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
               />
             </svg>
+            <span>K Dev</span>
           </Link>
         </div>
         <div className="nav-links justify-center duration-500 md:static absolute bg-white md:min-h-fit min-h-[40vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5">
           <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-4">
             <li>
               <Link className="hover:text-gray-500" href="#">
-                Products
+                เกี่ยวกับเรา
               </Link>
             </li>
             <li>
               <Link className="hover:text-gray-500" href="#">
-                Solution
+                ผลิตภัณฑ์
               </Link>
             </li>
             <li>
               <Link className="hover:text-gray-500" href="#">
-                Resource
+                ผลงาน
               </Link>
             </li>
             <li>
               <Link className="hover:text-gray-500" href="#">
-                Developers
+                บทความ
               </Link>
             </li>
             <li>
               <Link className="hover:text-gray-500" href="#">
-                Pricing
+                ติดต่อ
               </Link>
             </li>
             <li>{session ? <LogoutButton /> : <LoginButton />}</li>
