@@ -70,7 +70,7 @@ export const Navbar = () => {
                 return (
                   <Link
                     href={menu.Link}
-                    className="py-4 px-4 hover:bg-yellow-300"
+                    className="py-4 px-4 hover:underline decoration-yellow-300 underline-offset-8 decoration-4"
                     key={index}
                   >
                     {menu.Name}
