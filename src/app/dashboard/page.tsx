@@ -19,7 +19,7 @@ export default function Dashboard({}: Props) {
     fetchAPI();
   }, []);
 
-  const SearchData = (e) => {
+  const SearchData = (e? : any) => {
     const filter = data.filter((element) =>
       element.name.toLowerCase().includes(e.target.value)
     );
