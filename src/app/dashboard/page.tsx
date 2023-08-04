@@ -40,7 +40,7 @@ export default function Dashboard({}: Props) {
           </tr>
         </thead>
         <tbody>
-          {records.map((e, i) => (
+          {records.map((e : any, i) => (
             <tr key={i}>
               <td>{e.id}</td>
               <td>{e.name}</td>
