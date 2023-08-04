@@ -20,7 +20,7 @@ export default function Dashboard({}: Props) {
   }, []);
 
   const SearchData = (e? : any) => {
-    const filter = data.filter((element) =>
+    const filter = data.filter((element : any) =>
       element.name.toLowerCase().includes(e.target.value)
     );
     setRecords(filter);
