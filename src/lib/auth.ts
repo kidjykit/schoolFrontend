@@ -5,6 +5,9 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
   providers: [
     CredentialsProvider({
       name: "account",
@@ -43,19 +46,26 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       // console.log(user);
       // Persist the OAuth access_token to the token right after signin
-      if (account) {
+      if (user) {
         // token.accessToken = account.access_token;
+
         token.firstname = user.firstname;
+        token.lastname = user.lastname;
+        token.email = user.email;
+        token.school = user.school;
       }
       return token;
     },
     async session({ session, token }) {
       // Send properties to the client, like an access_token from a provider.
-      // session.accessToken = token.accessToken;
-      session.user.firstname = token.firstname;
+      // session.accessToken = token.accessToken as string;
+      session.user.firstname = token.firstname as string;
+      session.user.lastname = token.lastname as string;
+      session.user.email = token.email as string;
+      session.user.school = token.school as string;
       return session;
     },
   },
