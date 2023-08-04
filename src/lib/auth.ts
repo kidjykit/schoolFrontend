@@ -47,15 +47,15 @@ export const authOptions: NextAuthOptions = {
       // console.log(user);
       // Persist the OAuth access_token to the token right after signin
       if (account) {
-        token.accessToken = account.access_token;
-        token.user = user;
+        // token.accessToken = account.access_token;
+        token.firstname = user.firstname;
       }
       return token;
     },
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       // Send properties to the client, like an access_token from a provider.
-      session.accessToken = token.accessToken as string;
-      session.user = token.user as string;
+      // session.accessToken = token.accessToken;
+      session.user.firstname = token.firstname;
       return session;
     },
   },
