@@ -7,15 +7,20 @@ import {
   CloseButton,
 } from "./button.component";
 import Link from "next/link";
-import react, { useEffect, useState } from "react";
+import react, { useEffect, useState, useRef } from "react";
 
 export const Navbar = () => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
+  const notInitialRender = useRef(false);
 
   useEffect(() => {
-    const navLinks = document.querySelector(".nav-links");
-    navLinks?.classList.toggle("top-[6%]");
+    if (notInitialRender.current) {
+      const navLinks = document.querySelector(".nav-links");
+      navLinks?.classList.toggle("top-[9%]");
+    } else {
+      notInitialRender.current = true;
+    }
   }, [isOpen]);
 
   return (
@@ -75,7 +80,7 @@ export const Navbar = () => {
               setIsOpen(!isOpen);
             }}
           >
-            {isOpen ? <MenuButton /> : <CloseButton />}
+            {isOpen ? <CloseButton /> : <MenuButton />}
           </button>
         </div>
       </nav>
