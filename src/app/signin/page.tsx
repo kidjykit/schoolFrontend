@@ -1,10 +1,11 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 const LoginPage = () => {
   const { data: session } = useSession();
+  const [error, setError] = useState(false);
 
   if (session) {
     redirect("/");
@@ -17,9 +18,14 @@ const LoginPage = () => {
     const result = await signIn("credentials", {
       email: emailRef.current,
       password: passRef.current,
-      redirect: true,
+      redirect: false,
       callbackUrl: "/",
     });
+
+    if (!result?.error) {
+    } else {
+      setError(true);
+    }
   };
   return (
     <>
@@ -40,6 +46,13 @@ const LoginPage = () => {
                 placeholder="รหัสผ่าน"
                 onChange={(e) => (passRef.current = e.target.value)}
               />
+              {error ? (
+                <div className="text-xl text-red-700">
+                  ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง
+                </div>
+              ) : (
+                <div></div>
+              )}
               <button
                 onClick={onSubmit}
                 className="bg-[#002D74] text-white rounded-xl py-2 hover:scale-105
