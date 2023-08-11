@@ -1,4 +1,5 @@
 import { NextAuthProvider } from "./providers";
+import { Navbar } from "./components/navbar2.component";
 import "./globals.css";
 
 export const metadata = {
@@ -14,7 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-gradient-to-t from-[#fbc2eb] to-[#a6c1ee] h-screen">
-        <NextAuthProvider>{children}</NextAuthProvider>
+        <NextAuthProvider>
+          <Navbar />
+          {children}
+        </NextAuthProvider>
       </body>
     </html>
   );

@@ -13,15 +13,15 @@ export const Navbar = () => {
   const menuItems = [
     {
       Name: "เกี่ยวกับเรา",
-      Link: "#",
+      Link: "/",
     },
     {
-      Name: "ผลิตภัณฑ์",
-      Link: "#",
+      Name: "ลงทะเบียนเรียน",
+      Link: "/payment",
     },
     {
       Name: "ผลงาน",
-      Link: "#",
+      Link: "/dashboard",
     },
     {
       Name: "บทความ",
@@ -43,41 +43,39 @@ export const Navbar = () => {
     <nav className="bg-gray-100">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between">
-          <div className="flex space-x-4">
-            {/* <!-- logo --> */}
-            <div>
-              <Link href="#" className="flex items-center py-5 px-2">
-                <svg
-                  className="h-10 w-10 mr-1 text-yellow-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
+          {/* <!-- logo --> */}
+          <div>
+            <Link href="#" className="flex items-center py-5 px-2">
+              <svg
+                className="h-10 w-10 mr-1 text-yellow-400"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+                />
+              </svg>
+              <span>School Dev</span>
+            </Link>
+          </div>
+          {/* <!-- nav --> */}
+          <div className="hidden md:flex items-center space-x-1">
+            {menuItems.map((menu, index) => {
+              return (
+                <Link
+                  href={menu.Link}
+                  className="py-4 px-4 hover:underline decoration-yellow-300 underline-offset-8 decoration-4"
+                  key={index}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
-                  />
-                </svg>
-                <span> Kidjy Dev </span>
-              </Link>
-            </div>
-            {/* <!-- nav --> */}
-            <div className="hidden md:flex items-center space-x-1">
-              {menuItems.map((menu, index) => {
-                return (
-                  <Link
-                    href={menu.Link}
-                    className="py-4 px-4 hover:underline decoration-yellow-300 underline-offset-8 decoration-4"
-                    key={index}
-                  >
-                    {menu.Name}
-                  </Link>
-                );
-              })}
-            </div>
+                  {menu.Name}
+                </Link>
+              );
+            })}
           </div>
           {/* <!-- menu --> */}
           <div className="hidden md:flex items-center space-x-1">
