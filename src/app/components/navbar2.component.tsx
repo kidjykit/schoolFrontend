@@ -7,6 +7,7 @@ import {
   CloseButton,
 } from "./button.component";
 import Link from "next/link";
+
 import react, { useEffect, useState, useRef } from "react";
 
 export const Navbar = () => {
@@ -45,7 +46,7 @@ export const Navbar = () => {
         <div className="flex justify-between">
           {/* <!-- logo --> */}
           <div>
-            <Link href="#" className="flex items-center py-5 px-2">
+            <Link href="/" className="flex items-center py-5 px-2">
               <svg
                 className="h-10 w-10 mr-1 text-yellow-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +111,7 @@ export const Navbar = () => {
           {menuItems.map((menu, index) => {
             return (
               <Link
+                onClick={onTogglebutton}
                 href={menu.Link}
                 className="block py-2 px-4 test-sm hover:bg-yellow-200"
                 key={index}
